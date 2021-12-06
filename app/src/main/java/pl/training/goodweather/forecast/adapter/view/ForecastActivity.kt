@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import pl.training.goodweather.commons.hideKeyboard
+import pl.training.goodweather.commons.setDrawable
 import pl.training.goodweather.databinding.ActivityForecastBinding
 
 internal class ForecastActivity : AppCompatActivity() {
@@ -21,6 +23,7 @@ internal class ForecastActivity : AppCompatActivity() {
     private fun bindViews() {
         viewModel.forecast.observe(this, ::updateView)
         binding.checkButton.setOnClickListener {
+            it.hideKeyboard()
             val cityName = binding.cityNameEditText.text.toString()
             viewModel.refreshForecast(cityName)
         }
@@ -28,7 +31,7 @@ internal class ForecastActivity : AppCompatActivity() {
 
     private fun updateView(forecast: List<DayForecastViewModel>) {
         with(forecast.first()) {
-           // binding.iconImage.setImageDrawable(getDrawable(R.id.))
+            binding.iconImage.setDrawable(icon)
             binding.descriptionTextView.text = description
             binding.temperatureTextView.text = temperature
             binding.pressureTextView.text = pressure
