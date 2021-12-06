@@ -3,4 +3,7 @@
     <string name="hello_message">Hello World!</string>
     <string name="say_hello_button">Say Hello</string>
     <string name="hello_message_response">Hello Android</string>
+    <string name="city_name">City name</string>
+    <string name="check">Check</string>
+    <string name="icon">Icon</string>
 </resources>

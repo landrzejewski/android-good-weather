@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_gradient"
+    tools:context=".forecast.adapter.view.ForecastActivity">
+
+    <EditText
+        android:id="@+id/cityNameEditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/small_margin"
+        android:autofillHints="name"
+        android:textColor="@color/primaryDarkColor"
+        android:backgroundTint="@color/white"
+        android:gravity="center"
+        android:hint="@string/city_name"
+        android:inputType="text"
+        android:lines="1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/checkButton" />
+
+    <Button
+        android:id="@+id/checkButton"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/small_margin"
+        android:text="@string/check"
+        app:layout_constraintBaseline_toBaselineOf="@id/cityNameEditText"
+        app:layout_constraintStart_toEndOf="@id/cityNameEditText"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <ImageView
+        android:id="@+id/iconImage"
+        android:layout_width="@dimen/icon"
+        android:layout_height="@dimen/icon"
+        android:contentDescription="@string/icon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.25" />
+
+    <TextView
+        android:id="@+id/descriptionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="@dimen/big_font"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iconImage" />
+
+    <TextView
+        android:id="@+id/temperatureTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="@dimen/normal_font"
+        android:layout_marginTop="@dimen/small_margin"
+        app:layout_constraintEnd_toStartOf="@id/pressureTextView"
+        app:layout_constraintStart_toStartOf="@id/iconImage"
+        app:layout_constraintTop_toBottomOf="@id/descriptionTextView" />
+
+    <TextView
+        android:id="@+id/pressureTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="@dimen/normal_font"
+        android:layout_marginTop="@dimen/small_margin"
+        app:layout_constraintStart_toEndOf="@id/temperatureTextView"
+        app:layout_constraintEnd_toEndOf="@id/iconImage"
+        app:layout_constraintTop_toBottomOf="@id/descriptionTextView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
