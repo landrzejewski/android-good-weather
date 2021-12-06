@@ -13,6 +13,10 @@ internal class FakeForecastProvider : ForecastProvider {
         DayForecast("ic_sun", "Clear sky", 18.0, 1024.0, Date()),
         DayForecast("ic_sun", "Clear sky", 18.0, 1024.0, Date()),
         DayForecast("ic_sun", "Clear sky", 18.0, 1024.0, Date()),
+        DayForecast("ic_sun", "Clear sky", 18.0, 1024.0, Date()),
+        DayForecast("ic_sun", "Clear sky", 18.0, 1024.0, Date()),
+        DayForecast("ic_sun", "Clear sky", 18.0, 1024.0, Date()),
+        DayForecast("ic_sun", "Clear sky", 18.0, 1024.0, Date()),
         DayForecast("ic_sun", "Clear sky", 18.0, 1024.0, Date())
     )
 
