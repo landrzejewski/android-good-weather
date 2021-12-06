@@ -3,7 +3,7 @@
     <dimen name="margin">32dp</dimen>
     <dimen name="default_text">24sp</dimen>
     <dimen name="small_margin">16dp</dimen>
-    <dimen name="icon">200dp</dimen>
+    <dimen name="icon">180dp</dimen>
     <dimen name="big_font">36sp</dimen>
     <dimen name="normal_font">24sp</dimen>
     <dimen name="small_padding">8dp</dimen>
