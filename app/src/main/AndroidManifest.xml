@@ -11,7 +11,7 @@
         android:theme="@style/Theme.GoodWeather">
 
         <activity
-            android:name=".forecast.adapter.view.MainActivity"
+            android:name=".forecast.adapter.view.ForecastActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
