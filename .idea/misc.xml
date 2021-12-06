@@ -3,6 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/landr/Desktop/GoodWeather/app/src/main/res/drawable/background_gradient.xml" value="0.29025641025641025" />
+        <entry key="..\:/Users/landr/Desktop/GoodWeather/app/src/main/res/drawable/ic_bolt.xml" value="0.29025641025641025" />
+        <entry key="..\:/Users/landr/Desktop/GoodWeather/app/src/main/res/drawable/ic_cloud.xml" value="0.29025641025641025" />
+        <entry key="..\:/Users/landr/Desktop/GoodWeather/app/src/main/res/drawable/ic_cloud_rain.xml" value="0.29025641025641025" />
+        <entry key="..\:/Users/landr/Desktop/GoodWeather/app/src/main/res/drawable/ic_cloud_sun.xml" value="0.29025641025641025" />
+        <entry key="..\:/Users/landr/Desktop/GoodWeather/app/src/main/res/drawable/ic_launcher_background.xml" value="0.29025641025641025" />
         <entry key="..\:/Users/landr/Desktop/GoodWeather/app/src/main/res/layout/activity_main.xml" value="0.33" />
       </map>
     </option>

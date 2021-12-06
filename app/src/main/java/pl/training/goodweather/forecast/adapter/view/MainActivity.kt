@@ -1,10 +1,11 @@
-package pl.training.goodweather
+package pl.training.goodweather.forecast.adapter.view
 
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import pl.training.goodweather.R
 
 class MainActivity : AppCompatActivity() {
 
