@@ -1,7 +1,6 @@
 package pl.training.goodweather.forecast.adapter.view
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import pl.training.goodweather.commons.hideKeyboard
@@ -36,6 +35,7 @@ internal class ForecastActivity : AppCompatActivity() {
             binding.temperatureTextView.text = temperature
             binding.pressureTextView.text = pressure
         }
+        binding.nextDayTemperatureTextView.text = forecast[1].date
     }
 
 }
