@@ -22,7 +22,7 @@ class OpenWeatherProvider(private val openWeatherApi: OpenWeatherApi, private va
 
     private fun toModel(dayForecastTransferObject: DayForecastTransferObject) = with(dayForecastTransferObject) {
         val weatherData = weather.first()
-        val icon = icons[weatherData.description] ?: "ic_sun"
+        val icon = icons[weatherData.icon] ?: "ic_sun"
         DayForecast(icon, weatherData.description, temperature.day, pressure, Date(date * 1_000))
     }
 
