@@ -1,5 +1,6 @@
 package pl.training.goodweather.commons
 
+import pl.training.goodweather.commons.logging.AndroidLogger
 import pl.training.goodweather.forecast.adapter.provider.FakeForecastProvider
 import pl.training.goodweather.forecast.adapter.provider.openweathermap.OpenWeatherApi
 import pl.training.goodweather.forecast.adapter.provider.openweathermap.OpenWeatherProvider
@@ -18,3 +19,5 @@ private val openWeatherApi = Retrofit.Builder()
 private val openWeatherForecastService = ForecastService(OpenWeatherProvider(openWeatherApi))
 
 fun forecastService() = openWeatherForecastService
+
+fun logger() = AndroidLogger()

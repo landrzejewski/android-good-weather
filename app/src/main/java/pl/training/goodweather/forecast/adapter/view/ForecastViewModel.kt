@@ -16,7 +16,13 @@ class ForecastViewModel : ViewModel() {
 
     fun refreshForecast(city: String) {
         viewModelScope.launch {
-            forecastData.value = forecastService.getForecast(city).map(::toViewModel)
+            onForecastLoaded(forecastService.getForecast(city).map(::toViewModel))
+        }
+    }
+
+    private fun onForecastLoaded(forecast: List<DayForecastViewModel>) {
+        if (forecast.isNotEmpty()) {
+            forecastData.value = forecast
         }
     }
 
