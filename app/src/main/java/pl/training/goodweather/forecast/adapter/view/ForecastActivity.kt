@@ -5,11 +5,20 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
+import pl.training.goodweather.commons.getProperty
 import pl.training.goodweather.commons.hideKeyboard
 import pl.training.goodweather.commons.setDrawable
+import pl.training.goodweather.commons.setProperty
 import pl.training.goodweather.databinding.ActivityForecastBinding
 
 class ForecastActivity : AppCompatActivity() {
+
+    companion object {
+
+        const val CITY_KEY = "cityName"
+        const val DEFAULT_CITY_NAME = "warsaw"
+
+    }
 
     private val viewModel: ForecastViewModel by viewModels()
     private val forecastListAdapter = ForecastListAdapter()
@@ -21,6 +30,7 @@ class ForecastActivity : AppCompatActivity() {
         setContentView(binding.root)
         initViews()
         bindViews()
+        loadLatestForecast()
     }
 
     private fun initViews() {
@@ -33,7 +43,15 @@ class ForecastActivity : AppCompatActivity() {
         binding.checkButton.setOnClickListener {
             it.hideKeyboard()
             val cityName = binding.cityNameEditText.text.toString()
+            setProperty(CITY_KEY, cityName)
             viewModel.refreshForecast(cityName)
+        }
+    }
+
+    private fun loadLatestForecast() {
+        getProperty(CITY_KEY, DEFAULT_CITY_NAME)?.let {
+            viewModel.refreshForecast(it)
+            binding.cityNameEditText.setText(it)
         }
     }
 
