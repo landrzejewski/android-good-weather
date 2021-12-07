@@ -10,6 +10,7 @@ class GoodWeatherApplication : Application() {
     companion object {
 
         lateinit var componentsGraph: ComponentsGraph
+            private set
 
     }
 

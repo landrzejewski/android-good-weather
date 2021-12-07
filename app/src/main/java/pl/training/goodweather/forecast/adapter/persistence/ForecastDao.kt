@@ -13,7 +13,7 @@ interface ForecastDao {
     suspend fun save(cityEntity: CityEntity)
 
     @Insert
-    suspend fun save(forecast: List<ForecastEntity>)
+    suspend fun save(forecast: List<DayForecastEntity>)
 
     @Transaction
     @Query("select * from CityEntity where name = :city")

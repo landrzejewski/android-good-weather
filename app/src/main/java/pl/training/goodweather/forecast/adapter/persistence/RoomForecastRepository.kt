@@ -1,15 +1,18 @@
 package pl.training.goodweather.forecast.adapter.persistence
 
-import android.util.Log
 import pl.training.goodweather.forecast.api.ForecastRepository
 import pl.training.goodweather.forecast.model.DayForecast
 
 class RoomForecastRepository(private val forecastDao: ForecastDao) : ForecastRepository {
 
+    companion object {
+
+        const val CITY_ID = 1L
+
+    }
+
     override suspend fun save(city: String, forecast: List<DayForecast>) {
-        val cityEntity = CityEntity(null, city)
-        forecastDao.save(cityEntity)
-        Log.d("###", "")
+        forecastDao.save(CityEntity(CITY_ID, city))
     }
 
     override suspend fun getAll(city: String): List<DayForecast> {
