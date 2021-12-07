@@ -1,5 +1,6 @@
 package pl.training.goodweather.forecast.adapter.view
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -17,6 +18,7 @@ class ForecastActivity : AppCompatActivity() {
 
         const val CITY_KEY = "cityName"
         const val DEFAULT_CITY_NAME = "warsaw"
+        const val DAY_FORECAST_KEY = "dayForecast"
 
     }
 
@@ -45,6 +47,11 @@ class ForecastActivity : AppCompatActivity() {
             val cityName = binding.cityNameEditText.text.toString()
             setProperty(CITY_KEY, cityName)
             viewModel.refreshForecast(cityName)
+        }
+        binding.iconImage.setOnClickListener {
+            val intent = Intent(this, DayForecastActivity::class.java)
+            intent.putExtra(DAY_FORECAST_KEY, viewModel.currentDayForecast)
+            startActivity(intent)
         }
     }
 

@@ -21,6 +21,7 @@ class ForecastViewModel : ViewModel() {
     private val forecastData = MutableLiveData<List<DayForecastViewModel>>()
 
     val forecast: LiveData<List<DayForecastViewModel>> = forecastData
+    var currentDayForecast: DayForecastViewModel? = null
 
     fun refreshForecast(city: String) {
         viewModelScope.launch {
@@ -31,6 +32,7 @@ class ForecastViewModel : ViewModel() {
 
     private fun onForecastLoaded(forecast: List<DayForecastViewModel>) {
         if (forecast.isNotEmpty()) {
+            currentDayForecast = forecast.first()
             forecastData.value = forecast
         }
     }
