@@ -12,7 +12,7 @@ import pl.training.goodweather.forecast.adapter.provider.FakeForecastProvider
 import pl.training.goodweather.forecast.model.DayForecast
 import pl.training.goodweather.forecast.model.ForecastService
 
-internal class ForecastViewModel : ViewModel() {
+class ForecastViewModel : ViewModel() {
 
     private val forecastService = ForecastService(FakeForecastProvider())
     private val forecastData = MutableLiveData<List<DayForecastViewModel>>()
