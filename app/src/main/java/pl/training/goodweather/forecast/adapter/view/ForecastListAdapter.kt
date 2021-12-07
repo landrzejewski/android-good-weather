@@ -8,9 +8,9 @@ import pl.training.goodweather.R
 import pl.training.goodweather.commons.setDrawable
 import pl.training.goodweather.databinding.ItemDayForecastBinding
 
-internal class ForecastListAdapter(private var forecast: List<DayForecastViewModel> = emptyList()) : RecyclerView.Adapter<ForecastListAdapter.ViewHolder>() {
+class ForecastListAdapter(private var forecast: List<DayForecastViewModel> = emptyList()) : RecyclerView.Adapter<ForecastListAdapter.ViewHolder>() {
 
-    internal class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         private val binding = ItemDayForecastBinding.bind(view)
 
