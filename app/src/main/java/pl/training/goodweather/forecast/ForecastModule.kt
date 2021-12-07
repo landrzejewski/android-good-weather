@@ -19,11 +19,11 @@ class ForecastModule {
     @Named("fake")
     @Singleton
     @Provides
-    internal fun fakeForecastProvider(): ForecastProvider = FakeForecastProvider()
+    fun fakeForecastProvider(): ForecastProvider = FakeForecastProvider()
 
     @Singleton
     @Provides
-    internal fun openWeatherApi(okHttpClient: OkHttpClient) = Retrofit.Builder()
+    fun openWeatherApi(okHttpClient: OkHttpClient) = Retrofit.Builder()
         .baseUrl("https://api.openweathermap.org/data/2.5/")
         .client(okHttpClient)
         .addConverterFactory(GsonConverterFactory.create())
@@ -33,10 +33,10 @@ class ForecastModule {
     @Named("openweather")
     @Singleton
     @Provides
-    internal fun openWeatherProvider(openWeatherApi: OpenWeatherApi): ForecastProvider = OpenWeatherProvider(openWeatherApi)
+    fun openWeatherProvider(openWeatherApi: OpenWeatherApi): ForecastProvider = OpenWeatherProvider(openWeatherApi)
 
     @Singleton
     @Provides
-    internal fun forecastService(@Named("openweather") forecastProvider: ForecastProvider) = ForecastService(forecastProvider)
+    fun forecastService(@Named("openweather") forecastProvider: ForecastProvider) = ForecastService(forecastProvider)
 
 }

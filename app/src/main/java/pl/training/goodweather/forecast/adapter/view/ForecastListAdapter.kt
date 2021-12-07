@@ -34,7 +34,7 @@ class ForecastListAdapter(private var forecast: List<DayForecastViewModel> = emp
 
     override fun getItemCount() = forecast.size
 
-    internal fun update(forecast: List<DayForecastViewModel>) {
+    fun update(forecast: List<DayForecastViewModel>) {
         this.forecast = forecast
         notifyDataSetChanged()
     }
