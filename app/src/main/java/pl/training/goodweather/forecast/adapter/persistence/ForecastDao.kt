@@ -17,7 +17,7 @@ interface ForecastDao {
 
     @Transaction
     @Query("select * from CityEntity where name = :city")
-    suspend fun findAll(city: String): ForecastEntity
+    suspend fun findAll(city: String): ForecastEntity?
 
     @Query("delete from DayForecastEntity")
     suspend fun deleteAll()

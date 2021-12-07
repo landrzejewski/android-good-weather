@@ -3,6 +3,7 @@ package pl.training.goodweather.forecast
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
+import pl.training.goodweather.commons.logging.Logger
 import pl.training.goodweather.configuration.ApplicationDatabase
 import pl.training.goodweather.forecast.adapter.persistence.ForecastDao
 import pl.training.goodweather.forecast.adapter.persistence.RoomForecastRepository
@@ -37,7 +38,7 @@ class ForecastModule {
     @Named("openweather")
     @Singleton
     @Provides
-    fun openWeatherProvider(openWeatherApi: OpenWeatherApi): ForecastProvider = OpenWeatherProvider(openWeatherApi)
+    fun openWeatherProvider(openWeatherApi: OpenWeatherApi, logger: Logger): ForecastProvider = OpenWeatherProvider(openWeatherApi, logger)
 
     @Singleton
     @Provides
