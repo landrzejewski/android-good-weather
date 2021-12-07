@@ -53,6 +53,11 @@ class ForecastActivity : AppCompatActivity() {
             intent.putExtra(DAY_FORECAST_KEY, viewModel.currentDayForecast)
             startActivity(intent)
         }
+        forecastListAdapter.tapListener = {
+            val intent = Intent(this, DayForecastActivity::class.java)
+            intent.putExtra(DAY_FORECAST_KEY, it)
+            startActivity(intent)
+        }
     }
 
     private fun loadLatestForecast() {
