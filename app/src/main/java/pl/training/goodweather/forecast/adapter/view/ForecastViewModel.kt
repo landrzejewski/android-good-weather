@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import pl.training.goodweather.commons.forecastService
 
-internal class ForecastViewModel : ViewModel() {
+class ForecastViewModel : ViewModel() {
 
     private val forecastService = forecastService()
     private val forecastData = MutableLiveData<List<DayForecastViewModel>>()

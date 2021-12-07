@@ -9,7 +9,7 @@ import pl.training.goodweather.commons.hideKeyboard
 import pl.training.goodweather.commons.setDrawable
 import pl.training.goodweather.databinding.ActivityForecastBinding
 
-internal class ForecastActivity : AppCompatActivity() {
+class ForecastActivity : AppCompatActivity() {
 
     private val viewModel: ForecastViewModel by viewModels()
     private val forecastListAdapter = ForecastListAdapter()
