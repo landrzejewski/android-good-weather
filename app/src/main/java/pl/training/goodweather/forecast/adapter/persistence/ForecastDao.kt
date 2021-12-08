@@ -5,21 +5,23 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy.IGNORE
 import androidx.room.Query
 import androidx.room.Transaction
+import io.reactivex.rxjava3.core.Completable
+import io.reactivex.rxjava3.core.Maybe
 
 @Dao
 interface ForecastDao {
 
     @Insert(onConflict = IGNORE)
-    suspend fun save(cityEntity: CityEntity)
+    fun save(cityEntity: CityEntity): Completable
 
     @Insert
-    suspend fun save(forecast: List<DayForecastEntity>)
+    fun save(forecast: List<DayForecastEntity>): Completable
 
     @Transaction
     @Query("select * from CityEntity where name = :city")
-    suspend fun findAll(city: String): ForecastEntity?
+    fun findAll(city: String): Maybe<ForecastEntity>
 
     @Query("delete from DayForecastEntity")
-    suspend fun deleteAll()
+    fun deleteAll(): Completable
 
 }

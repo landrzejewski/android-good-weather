@@ -20,17 +20,7 @@
         android:lines="1"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/checkButton" />
-
-    <Button
-        android:id="@+id/checkButton"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/small_margin"
-        android:text="@string/check"
-        app:layout_constraintBaseline_toBaselineOf="@id/cityNameEditText"
-        app:layout_constraintStart_toEndOf="@id/cityNameEditText"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView
         android:id="@+id/iconImage"
