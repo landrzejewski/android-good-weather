@@ -59,6 +59,7 @@ class ForecastFragment : Fragment() {
         binding.cityNameEditText.textChanges()
             .map { it.toString() }
             .filter { it.isNotEmpty() }
+            .filter { it != getProperty(CITY_KEY)}
             .debounce(3, TimeUnit.SECONDS)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(::refreshForecast) { logger.log("Fetching forecast failed") }
