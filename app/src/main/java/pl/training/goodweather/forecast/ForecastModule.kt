@@ -52,6 +52,7 @@ class ForecastModule {
 
     @Singleton
     @Provides
-    fun forecastService(@Named("openweather") forecastProvider: ForecastProvider, forecastRepository: ForecastRepository) = ForecastService(forecastProvider, forecastRepository)
+    fun forecastService(@Named("openweather") forecastProvider: ForecastProvider, forecastRepository: ForecastRepository, logger: Logger)
+        = ForecastService(forecastProvider, forecastRepository, logger)
 
 }
