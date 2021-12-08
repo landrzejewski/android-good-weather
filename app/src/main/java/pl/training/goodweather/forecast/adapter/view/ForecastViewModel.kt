@@ -31,7 +31,7 @@ class ForecastViewModel : ViewModel() {
 
     private fun onForecastLoaded(forecast: List<DayForecastViewModel>) {
         if (forecast.isNotEmpty()) {
-            forecastData.value = forecast
+            forecastData.postValue(forecast)
         }
     }
 
