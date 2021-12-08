@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/routing"
+    app:startDestination="@id/forecastFragment">
+
+    <fragment
+        android:id="@+id/forecastFragment"
+        android:name="pl.training.goodweather.forecast.adapter.view.ForecastFragment"
+        android:label="@string/forecast">
+        <action
+            android:id="@+id/show_day_forecast_details"
+            app:destination="@id/dayForecastFragment" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/dayForecastFragment"
+        android:name="pl.training.goodweather.forecast.adapter.view.DayForecastFragment"
+        android:label="@string/day_forecast">
+        <action
+            android:id="@+id/show_forecast"
+            app:destination="@id/forecastFragment" />
+    </fragment>
+
+
+</navigation>

@@ -1,47 +1,54 @@
 package pl.training.goodweather.forecast.adapter.view
 
-import android.content.Intent
 import android.os.Bundle
-import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
+import pl.training.goodweather.R
 import pl.training.goodweather.commons.getProperty
 import pl.training.goodweather.commons.hideKeyboard
 import pl.training.goodweather.commons.setDrawable
 import pl.training.goodweather.commons.setProperty
-import pl.training.goodweather.databinding.ActivityForecastBinding
+import pl.training.goodweather.databinding.FragmentForecastBinding
 
-class ForecastActivity : AppCompatActivity() {
+class ForecastFragment : Fragment() {
 
     companion object {
 
         const val CITY_KEY = "cityName"
         const val DEFAULT_CITY_NAME = "warsaw"
-        const val DAY_FORECAST_KEY = "dayForecast"
 
     }
 
-    private val viewModel: ForecastViewModel by viewModels()
+    private val viewModel: ForecastViewModel by activityViewModels()
     private val forecastListAdapter = ForecastListAdapter()
-    private lateinit var binding: ActivityForecastBinding
+    private lateinit var binding: FragmentForecastBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityForecastBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        super.onCreateView(inflater, container, savedInstanceState)
+        binding = FragmentForecastBinding.inflate(layoutInflater)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         initViews()
         bindViews()
         loadLatestForecast()
     }
 
     private fun initViews() {
-        binding.forecastRecyclerView.layoutManager = LinearLayoutManager(this, HORIZONTAL, false)
+        binding.forecastRecyclerView.layoutManager = LinearLayoutManager(requireContext(), HORIZONTAL, false)
         binding.forecastRecyclerView.adapter = forecastListAdapter
     }
 
     private fun bindViews() {
-        viewModel.forecast.observe(this, ::updateView)
+        viewModel.forecast.observe(viewLifecycleOwner, ::updateView)
         binding.checkButton.setOnClickListener {
             it.hideKeyboard()
             val cityName = binding.cityNameEditText.text.toString()
@@ -49,14 +56,11 @@ class ForecastActivity : AppCompatActivity() {
             viewModel.refreshForecast(cityName)
         }
         binding.iconImage.setOnClickListener {
-            val intent = Intent(this, DayForecastActivity::class.java)
-            intent.putExtra(DAY_FORECAST_KEY, viewModel.currentDayForecast)
-            startActivity(intent)
+            findNavController().navigate(R.id.show_day_forecast_details)
         }
         forecastListAdapter.tapListener = {
-            val intent = Intent(this, DayForecastActivity::class.java)
-            intent.putExtra(DAY_FORECAST_KEY, it)
-            startActivity(intent)
+            viewModel.currentDayForecast = it
+            findNavController().navigate(R.id.show_day_forecast_details)
         }
     }
 

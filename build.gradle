@@ -15,6 +15,7 @@ buildscript {
         retrofit_version = "2.9.0"
         dagger_version = "2.40.4"
         room_version = "2.3.0"
+        navigation_version = "2.3.5"
     }
 }
 

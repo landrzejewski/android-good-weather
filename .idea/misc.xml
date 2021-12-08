@@ -11,7 +11,10 @@
         <entry key="..\:/Users/landr/Desktop/GoodWeather/app/src/main/res/drawable/ic_launcher_background.xml" value="0.29025641025641025" />
         <entry key="..\:/Users/landr/Desktop/GoodWeather/app/src/main/res/layout/activity_day_forecast.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/landr/Desktop/GoodWeather/app/src/main/res/layout/activity_forecast.xml" value="0.22" />
-        <entry key="..\:/Users/landr/Desktop/GoodWeather/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/landr/Desktop/GoodWeather/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Users/landr/Desktop/GoodWeather/app/src/main/res/layout/content_main.xml" value="0.1" />
+        <entry key="..\:/Users/landr/Desktop/GoodWeather/app/src/main/res/layout/fragment_day_forecast.xml" value="0.21041666666666667" />
+        <entry key="..\:/Users/landr/Desktop/GoodWeather/app/src/main/res/layout/fragment_forecast.xml" value="0.19610507246376813" />
         <entry key="..\:/Users/landr/Desktop/GoodWeather/app/src/main/res/layout/item_day_forecast.xml" value="0.33" />
       </map>
     </option>

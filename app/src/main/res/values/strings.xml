@@ -6,4 +6,6 @@
     <string name="city_name">City name</string>
     <string name="check">Check</string>
     <string name="icon">Icon</string>
+    <string name="forecast">Forecast</string>
+    <string name="day_forecast">Day forecast</string>
 </resources>

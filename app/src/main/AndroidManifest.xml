@@ -14,22 +14,16 @@
         android:theme="@style/Theme.GoodWeather">
 
         <activity
-            android:name=".forecast.adapter.view.ForecastActivity"
+            android:name=".MainActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity
-            android:name=".forecast.adapter.view.DayForecastActivity"
-            android:parentActivityName=".forecast.adapter.view.ForecastActivity"
-            android:exported="false" />
 
     </application>
 
