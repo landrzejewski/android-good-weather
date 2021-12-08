@@ -14,16 +14,11 @@ import pl.training.goodweather.commons.getProperty
 import pl.training.goodweather.commons.hideKeyboard
 import pl.training.goodweather.commons.setDrawable
 import pl.training.goodweather.commons.setProperty
+import pl.training.goodweather.configuration.Values.CITY_KEY
+import pl.training.goodweather.configuration.Values.DEFAULT_CITY_NAME
 import pl.training.goodweather.databinding.FragmentForecastBinding
 
 class ForecastFragment : Fragment() {
-
-    companion object {
-
-        const val CITY_KEY = "cityName"
-        const val DEFAULT_CITY_NAME = "warsaw"
-
-    }
 
     private val viewModel: ForecastViewModel by activityViewModels()
     private val forecastListAdapter = ForecastListAdapter()
@@ -59,7 +54,7 @@ class ForecastFragment : Fragment() {
             findNavController().navigate(R.id.show_day_forecast_details)
         }
         forecastListAdapter.tapListener = {
-            viewModel.currentDayForecast = it
+            viewModel.selectedDayForecastDate = it.date
             findNavController().navigate(R.id.show_day_forecast_details)
         }
     }
@@ -73,6 +68,7 @@ class ForecastFragment : Fragment() {
 
     private fun updateView(forecast: List<DayForecastViewModel>) {
         with(forecast.first()) {
+            viewModel.selectedDayForecastDate = date
             binding.iconImage.setDrawable(icon)
             binding.descriptionTextView.text = description
             binding.temperatureTextView.text = temperature

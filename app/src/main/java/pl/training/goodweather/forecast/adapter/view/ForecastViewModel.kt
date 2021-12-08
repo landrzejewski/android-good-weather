@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import pl.training.goodweather.GoodWeatherApplication.Companion.componentsGraph
 import pl.training.goodweather.forecast.model.ForecastService
+import java.util.*
 import javax.inject.Inject
 
 class ForecastViewModel : ViewModel() {
@@ -21,7 +22,7 @@ class ForecastViewModel : ViewModel() {
     private val forecastData = MutableLiveData<List<DayForecastViewModel>>()
 
     val forecast: LiveData<List<DayForecastViewModel>> = forecastData
-    var currentDayForecast: DayForecastViewModel? = null
+    var selectedDayForecastDate: String? = null
 
     fun refreshForecast(city: String) {
         viewModelScope.launch {
@@ -32,7 +33,6 @@ class ForecastViewModel : ViewModel() {
 
     private fun onForecastLoaded(forecast: List<DayForecastViewModel>) {
         if (forecast.isNotEmpty()) {
-            currentDayForecast = forecast.first()
             forecastData.postValue(forecast)
         }
     }
