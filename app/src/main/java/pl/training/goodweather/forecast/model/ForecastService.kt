@@ -2,6 +2,7 @@ package pl.training.goodweather.forecast.model
 
 import io.reactivex.rxjava3.core.Maybe
 import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.core.Observable.concat
 import pl.training.goodweather.forecast.api.ForecastProvider
 import pl.training.goodweather.forecast.api.ForecastRepository
 
@@ -16,7 +17,7 @@ class ForecastService(private val forecastProvider: ForecastProvider, private va
                     .andThen(Maybe.just(it))
             }
             .toObservable()
-        return Observable.concat(cachedForecast, forecast)
+        return concat(cachedForecast, forecast)
     }
 
 }
