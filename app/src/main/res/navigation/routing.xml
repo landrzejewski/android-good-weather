@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/routing"
     app:startDestination="@id/forecastFragment">
 
@@ -23,5 +24,14 @@
             app:destination="@id/forecastFragment" />
     </fragment>
 
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="pl.training.goodweather.profile.adapter.view.ProfileFragment"
+        android:label="@string/profile" />
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="pl.training.goodweather.commons.view.SettingsFragment"
+        android:label="@string/settings" />
 
 </navigation>
