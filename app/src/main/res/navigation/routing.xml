@@ -3,7 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/routing"
-    app:startDestination="@id/forecastFragment">
+    app:startDestination="@id/trackingFragment">
+
+    <fragment
+        android:id="@+id/trackingFragment"
+        android:name="pl.training.goodweather.tracking.adapter.view.TrackingFragment"
+        android:label="@string/tracking">
+    </fragment>
+
 
     <fragment
         android:id="@+id/forecastFragment"
