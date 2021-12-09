@@ -61,7 +61,6 @@ class ForecastFragment : Fragment() {
             .filter { it.isNotEmpty() }
             .filter { it != getProperty(CITY_KEY)}
             .debounce(3, TimeUnit.SECONDS)
-            .observeOn(AndroidSchedulers.mainThread())
             .subscribe(::refreshForecast) { logger.log("Fetching forecast failed") }
             .addTo(disposables)
         binding.iconImage.setOnClickListener {
