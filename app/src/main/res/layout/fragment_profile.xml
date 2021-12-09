@@ -1,6 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="@dimen/small_padding"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/photoImageView"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:padding="@dimen/small_padding"
+        android:background="@drawable/rounded_rect"
+        android:contentDescription="@string/photo"
+        android:layout_marginTop="@dimen/margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/sectionTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/personal_info"
+        android:layout_marginTop="@dimen/margin"
+        android:textStyle="bold"
+        android:textSize="@dimen/big_font"
+        app:layout_constraintTop_toBottomOf="@id/photoImageView"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/fullNameEditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/full_name"
+        android:inputType="textPersonName"
+        android:autofillHints="none"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sectionTitleTextView" />
+
+    <EditText
+        android:id="@+id/emailNameEditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/email_address"
+        android:inputType="textEmailAddress"
+        android:autofillHints="none"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fullNameEditText" />
+
+    <EditText
+        android:id="@+id/birthDateEditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/date_of_birth"
+        android:inputType="date"
+        android:autofillHints="none"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/emailNameEditText" />
+
+    <TextView
+        android:id="@+id/errorsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/invalid"
+        android:layout_marginTop="@dimen/small_margin"
+        app:layout_constraintTop_toBottomOf="@id/birthDateEditText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
