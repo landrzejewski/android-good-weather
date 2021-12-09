@@ -5,6 +5,7 @@ import pl.training.goodweather.forecast.ForecastModule
 import pl.training.goodweather.forecast.adapter.view.ForecastFragment
 import pl.training.goodweather.forecast.adapter.view.ForecastViewModel
 import pl.training.goodweather.tracking.TrackingModule
+import pl.training.goodweather.tracking.adapter.view.TrackingFragment
 import pl.training.goodweather.tracking.adapter.view.TrackingViewModel
 import javax.inject.Singleton
 
@@ -17,5 +18,7 @@ interface ComponentsGraph {
     fun inject(trackingViewModel: TrackingViewModel)
 
     fun inject(forecastFragment: ForecastFragment)
+
+    fun inject(trackingFragment: TrackingFragment)
 
 }
