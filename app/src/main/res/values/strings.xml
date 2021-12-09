@@ -18,4 +18,8 @@
     <string name="invalidForm">Invalid form</string>
     <string name="close">Close</string>
     <string name="tracking">Tracking</string>
+    <string name="tracking_fragment_label">Tracking</string>
+    <string name="tracking_duration">Duration</string>
+    <string name="tracking_speed">Speed</string>
+    <string name="tracking_pace">Pace</string>
 </resources>

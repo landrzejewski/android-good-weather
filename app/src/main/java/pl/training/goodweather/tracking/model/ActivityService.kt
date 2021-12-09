@@ -18,7 +18,7 @@ class ActivityService {
         totalDistance = 0F
     }
 
-    fun createActivityPoint(position: Position, speed: Float, distance: Float) {
+    fun createActivityPoint(position: Position, speed: Float, distance: Float): ActivityPoint {
         val currentTime = System.currentTimeMillis()
         val duration = startTime - currentTime
         totalDistance += distance
@@ -26,8 +26,7 @@ class ActivityService {
         if (totalDistance > 0) {
             pace = duration.toDouble() / (1_000 * 60) / totalDistance / 1_000
         }
-        var activityPoint = ActivityPoint(null, activityId, currentTime, distance, speed, pace, duration, position)
-        // save to database
+        return ActivityPoint(null, activityId, currentTime, distance, speed, pace, duration, position)
     }
 
 }

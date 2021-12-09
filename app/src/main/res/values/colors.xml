@@ -11,4 +11,5 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="invalid">#F44336</color>
+    <color name="stats">#55ffffff</color>
 </resources>
