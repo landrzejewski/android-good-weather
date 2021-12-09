@@ -16,6 +16,8 @@ import io.reactivex.rxjava3.core.Observable.combineLatest
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.kotlin.addTo
 import pl.training.goodweather.R
+import pl.training.goodweather.commons.view.DialogBox
+import pl.training.goodweather.commons.view.RoundedTransformation
 import pl.training.goodweather.databinding.FragmentProfileBinding
 import java.util.Calendar.*
 
@@ -40,6 +42,7 @@ class ProfileFragment : Fragment(), DatePickerDialog.OnDateSetListener {
     private fun initViews() {
         Picasso.get()
             .load("https://www.kindpng.com/picc/m/3-36825_and-art-default-profile-picture-png-transparent-png.png")
+            .transform(RoundedTransformation(140,0))
             .into(binding.photoImageView)
     }
 
@@ -58,7 +61,10 @@ class ProfileFragment : Fragment(), DatePickerDialog.OnDateSetListener {
                 binding.birthDateEditText.clearFocus()
             }
         }
-        binding.licenseImageBox.setOnClickListener { showLicenseAlert() }
+        binding.licenseImageBox.setOnClickListener {
+            //showLicenseAlert()
+            DialogBox().show(requireContext(), "Buy license", requireView())
+        }
     }
 
     private fun toColor(isValid: Boolean) = requireContext().getColor(if (isValid) R.color.primaryTextColor else R.color.invalid)
