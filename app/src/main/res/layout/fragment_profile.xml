@@ -71,4 +71,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <pl.training.goodweather.commons.view.ImageBox
+        android:id="@+id/licenseImageBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:image="@drawable/ic_cloud_sun"
+        app:label="Demo"
+        android:layout_marginTop="@dimen/margin"
+        app:layout_constraintTop_toBottomOf="@id/errorsTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
