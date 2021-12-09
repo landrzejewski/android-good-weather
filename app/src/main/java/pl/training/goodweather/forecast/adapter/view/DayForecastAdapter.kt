@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import pl.training.goodweather.R
-import pl.training.goodweather.commons.setDrawable
+import pl.training.goodweather.commons.view.setDrawable
 import pl.training.goodweather.databinding.ItemDayForecastDetailsBinding
 
 class DayForecastAdapter(private var dayForecast: DayForecastViewModel) : RecyclerView.Adapter<DayForecastAdapter.ViewHolder>() {

@@ -10,7 +10,7 @@ class OpenWeatherProvider(private val openWeatherApi: OpenWeatherApi) : Forecast
     private val icons = mapOf("01d" to "ic_sun", "02d" to "ic_cloud_sun", "03d" to "ic_cloud", "04d" to "ic_cloud",
         "09d" to "ic_cloud_rain", "10d" to "ic_cloud_sun_rain", "11d" to "ic_bolt", "13d" to "ic_snowflake", "50d" to "ic_wind")
 
-    override fun getForecast(city: String): Maybe<List<DayForecast>> =  openWeatherApi.getForecast(city)
+    override fun getForecast(city: String, numberOfDays: Int): Maybe<List<DayForecast>> =  openWeatherApi.getForecast(city, numberOfDays)
         .map { it.forecast.map(::toModel)  }
 
     private fun toModel(dayForecastTransferObject: DayForecastTransferObject) = with(dayForecastTransferObject) {

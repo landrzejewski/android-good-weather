@@ -1,4 +1,4 @@
-package pl.training.goodweather.commons
+package pl.training.goodweather.commons.view
 
 import android.widget.ImageView
 import androidx.core.content.ContextCompat

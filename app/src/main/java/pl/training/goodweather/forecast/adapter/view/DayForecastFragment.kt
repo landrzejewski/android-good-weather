@@ -1,7 +1,6 @@
 package pl.training.goodweather.forecast.adapter.view
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,8 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.VERTICAL
-import pl.training.goodweather.commons.getProperty
-import pl.training.goodweather.configuration.Values
+import pl.training.goodweather.commons.view.getProperty
 import pl.training.goodweather.configuration.Values.CITY_KEY
 import pl.training.goodweather.configuration.Values.DEFAULT_CITY_NAME
 import pl.training.goodweather.databinding.FragmentDayForecastBinding

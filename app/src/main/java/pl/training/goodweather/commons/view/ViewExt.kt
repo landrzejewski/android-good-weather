@@ -1,4 +1,4 @@
-package pl.training.goodweather.commons
+package pl.training.goodweather.commons.view
 
 import android.content.Context.INPUT_METHOD_SERVICE
 import android.view.View

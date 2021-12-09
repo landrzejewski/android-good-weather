@@ -1,4 +1,4 @@
-package pl.training.goodweather.commons
+package pl.training.goodweather.commons.view
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatActivity.MODE_PRIVATE
