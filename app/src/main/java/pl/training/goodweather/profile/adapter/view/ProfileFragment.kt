@@ -23,7 +23,6 @@ import java.util.Calendar.*
 
 class ProfileFragment : Fragment(), DatePickerDialog.OnDateSetListener {
 
-    private val viewModel: ProfileViewModel by activityViewModels()
     private lateinit var binding: FragmentProfileBinding
     private val disposables = CompositeDisposable()
 
@@ -49,12 +48,12 @@ class ProfileFragment : Fragment(), DatePickerDialog.OnDateSetListener {
     private fun bindViews() {
         val fullName = binding.fullNameEditText.textChanges().map { it.length > 3 }
         val email = binding.emailNameEditText.textChanges().map { it.contains("@") }
-        combineLatest(fullName, email) { fullNameResult, emailResult -> fullNameResult && emailResult}
+        combineLatest(fullName, email) {fullNameResult, emailResult -> fullNameResult && emailResult}
             .skip(1)
             .subscribe { binding.errorsTextView.text = if (it) "" else getString(R.string.invalidForm) }
             .addTo(disposables)
-        fullName.map(::toColor).subscribe { binding.fullNameEditText.setTextColor(it) }
-        email.map(::toColor).subscribe { binding.emailNameEditText.setTextColor(it) }
+        fullName.map(::toColor).subscribe {binding.fullNameEditText.setTextColor(it)}.addTo(disposables)
+        email.map(::toColor).subscribe {binding.emailNameEditText.setTextColor(it)}.addTo(disposables)
         binding.birthDateEditText.setOnFocusChangeListener { _, hasFocus ->
             if (hasFocus) {
                 createDialog(requireContext()).show()

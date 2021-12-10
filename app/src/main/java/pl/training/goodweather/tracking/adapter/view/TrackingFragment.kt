@@ -1,6 +1,7 @@
 package pl.training.goodweather.tracking.adapter.view
 
 import android.Manifest.permission.ACCESS_FINE_LOCATION
+import android.location.Location
 import android.os.Bundle
 import android.os.Looper
 import android.view.LayoutInflater
@@ -17,13 +18,20 @@ import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationRequest.PRIORITY_HIGH_ACCURACY
 import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
+import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.PolylineOptions
 import pl.training.goodweather.GoodWeatherApplication.Companion.componentsGraph
 import pl.training.goodweather.R
 import pl.training.goodweather.commons.logging.Logger
+import pl.training.goodweather.commons.view.centerCamera
+import pl.training.goodweather.commons.view.drawRoute
+import pl.training.goodweather.configuration.Values.CAMERA_ZOOM
 import pl.training.goodweather.databinding.FragmentTrackingBinding
+import pl.training.goodweather.tracking.model.Position
 import javax.inject.Inject
 
 class TrackingFragment: Fragment(), GoogleApiClient.ConnectionCallbacks {
@@ -33,9 +41,12 @@ class TrackingFragment: Fragment(), GoogleApiClient.ConnectionCallbacks {
     private lateinit var map: GoogleMap
     private lateinit var binding: FragmentTrackingBinding
     private lateinit var googleApiClient: GoogleApiClient
-
     @Inject
     lateinit var logger: Logger
+    @Inject
+    lateinit var locationRequest: LocationRequest
+    private var lastLocation: Location? = null
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
@@ -47,8 +58,8 @@ class TrackingFragment: Fragment(), GoogleApiClient.ConnectionCallbacks {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val mapFragment = childFragmentManager.findFragmentById(R.id.trackingMap) as SupportMapFragment?
-        mapFragment?.getMapAsync(callback)
+        val mapFragment = childFragmentManager.findFragmentById(R.id.trackingMap) as SupportMapFragment
+        mapFragment.getMapAsync(callback)
     }
 
     private val callback = OnMapReadyCallback { googleMap ->
@@ -104,24 +115,33 @@ class TrackingFragment: Fragment(), GoogleApiClient.ConnectionCallbacks {
 
     @SuppressWarnings("MissingPermission")
     private fun requestLocationUpdates() {
-        val locationRequest = LocationRequest()
-        locationRequest.priority = PRIORITY_HIGH_ACCURACY
-        locationRequest.interval = 1000
-        locationRequest.fastestInterval = 1000
-        locationRequest.smallestDisplacement = 1F
         LocationServices.getFusedLocationProviderClient(requireContext())
             .requestLocationUpdates(locationRequest, locationUpdateCallback , Looper.getMainLooper())
     }
 
     private val locationUpdateCallback = object : LocationCallback() {
 
-        override fun onLocationResult(location: LocationResult?) {
-            super.onLocationResult(location)
-            location?.let {
-                logger.log("### " + it.toString())
-            }
+        override fun onLocationResult(locationResult: LocationResult?) {
+            super.onLocationResult(locationResult)
+            locationResult?.let {onLocationUpdate(locationResult.lastLocation)}
         }
 
+    }
+
+    private fun onLocationUpdate(location: Location) {
+        map.centerCamera(location)
+        val distance = if (lastLocation == null) 0F else location.distanceTo(lastLocation)
+        val position = Position(location.longitude, location.latitude)
+        viewModel.onLocationChange(position, location.speed, distance)
+        map.drawRoute(lastLocation, location)
+        updateStats()
+        lastLocation = location
+    }
+
+    private fun updateStats() {
+        binding.durationTextView.text = viewModel.duration
+        binding.speedTextView.text = viewModel.speed
+        binding.paceTextView.text = viewModel.pace
     }
 
 }

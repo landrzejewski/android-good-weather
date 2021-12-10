@@ -13,7 +13,7 @@ import pl.training.goodweather.forecast.api.ForecastProvider
 import pl.training.goodweather.forecast.api.ForecastRepository
 
 class ForecastService(private val forecastProvider: ForecastProvider, private val forecastRepository: ForecastRepository,
-                      private val userSettings: UserSettings, private val logger: Logger) {
+                      userSettings: UserSettings, private val logger: Logger) {
 
     private var numberOfDays: Int
     private var cacheEnabled: Boolean

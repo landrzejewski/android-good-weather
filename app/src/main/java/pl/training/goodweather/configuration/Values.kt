@@ -6,5 +6,6 @@ object Values {
     const val DEFAULT_CITY_NAME = "warsaw"
     const val FORECAST_NUMBER_OF_DAYS = "forecast_number_of_days"
     const val FORECAST_CACHE_ENABLED = "forecast_cache_enabled"
+    const val CAMERA_ZOOM = 16F
 
 }
