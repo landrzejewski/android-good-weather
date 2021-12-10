@@ -5,6 +5,7 @@ import pl.training.goodweather.commons.security.SecurityModule
 import pl.training.goodweather.forecast.ForecastModule
 import pl.training.goodweather.forecast.adapter.view.ForecastFragment
 import pl.training.goodweather.forecast.adapter.view.ForecastViewModel
+import pl.training.goodweather.security.adapter.view.LoginViewModel
 import pl.training.goodweather.tracking.TrackingModule
 import pl.training.goodweather.tracking.adapter.view.TrackingFragment
 import pl.training.goodweather.tracking.adapter.view.TrackingViewModel
@@ -21,5 +22,7 @@ interface ComponentsGraph {
     fun inject(forecastFragment: ForecastFragment)
 
     fun inject(trackingFragment: TrackingFragment)
+
+    fun inject(loginViewModel: LoginViewModel)
 
 }
