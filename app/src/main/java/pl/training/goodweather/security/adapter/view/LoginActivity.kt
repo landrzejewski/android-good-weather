@@ -1,6 +1,10 @@
 package pl.training.goodweather.security.adapter.view
 
+import android.app.ActivityManager
 import android.content.Intent
+import android.content.Intent.ACTION_SCREEN_OFF
+import android.content.Intent.ACTION_SCREEN_ON
+import android.content.IntentFilter
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -10,6 +14,9 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import pl.training.goodweather.MainActivity
+import pl.training.goodweather.commons.ExampleService
+import pl.training.goodweather.commons.ScreenOffReceiver
+import pl.training.goodweather.commons.ScreenOffService
 import pl.training.goodweather.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
@@ -22,7 +29,8 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
         bindViews()
-        firebaseExamples()
+        //firebaseExamples()
+        componentsExamples()
     }
 
     private fun bindViews() {
@@ -77,6 +85,31 @@ class LoginActivity : AppCompatActivity() {
             }
 
         usersCollection.document("1uhe14BLhLUdhnN28mIU").delete()
+    }
+
+    private lateinit var exampleService: ExampleService
+
+    private fun componentsExamples() {
+        /*val intent = Intent(this, ScreenOffService::class.java)
+        startService(intent)*/
+
+        exampleService = ExampleService()
+        val intent = Intent(this, exampleService::class.java)
+        if (!isServiceRunning(ExampleService::class.java)) {
+            startService(intent)
+        }
+    }
+
+    private fun isServiceRunning(serviceClass: Class<*>): Boolean {
+        val manager = getSystemService(ACTIVITY_SERVICE) as ActivityManager
+        for (service in manager.getRunningServices(Int.MAX_VALUE)) {
+            if (serviceClass.name == service.service.className) {
+                Log.i("###", "Service is running")
+                return true
+            }
+        }
+        Log.i("###", "Service is not running")
+        return false
     }
 
 }

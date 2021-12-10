@@ -14,7 +14,7 @@ class SecurityModule {
     @Singleton
     @Provides
     fun oauthApi(): OAuthApi = Retrofit.Builder()
-        .baseUrl("https://soft-cow-73.loca.lt/")
+        .baseUrl("https://dangerous-dodo-75.loca.lt/")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
         .create(OAuthApi::class.java)
