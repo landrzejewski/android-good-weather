@@ -11,6 +11,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import pl.training.goodweather.commons.UserSettings
 import pl.training.goodweather.commons.logging.AndroidLogger
 import pl.training.goodweather.commons.logging.Logger
+import pl.training.goodweather.commons.security.TokenInterceptor
 import javax.inject.Singleton
 
 @Module
@@ -26,10 +27,11 @@ class ApplicationModule(private val application: Application) {
 
     @Singleton
     @Provides
-    fun httpClient(): OkHttpClient {
+    fun httpClient(tokenInterceptor: TokenInterceptor): OkHttpClient {
         val loggingInterceptor = HttpLoggingInterceptor()
-        loggingInterceptor.level = HttpLoggingInterceptor.Level.BASIC
+        loggingInterceptor.level = HttpLoggingInterceptor.Level.HEADERS
         return OkHttpClient().newBuilder()
+            .addInterceptor(tokenInterceptor)
             .addInterceptor(loggingInterceptor)
             .build()
     }

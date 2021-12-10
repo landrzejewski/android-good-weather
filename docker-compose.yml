@@ -1,0 +1,23 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:14-alpine
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=training
+      - PGDATA=/database
+    volumes:
+      - ./data/postgres:/database
+  keycloak:
+    image: jboss/keycloak:15.0.1
+    environment:
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: admin
+      DB_VENDOR: "POSTGRES"
+      DB_ADDR: "postgres"
+      DB_USER: "admin"
+      DB_PASSWORD: "admin"
+      DB_DATABASE: "training"
+    ports:
+      - "8100:8080"
